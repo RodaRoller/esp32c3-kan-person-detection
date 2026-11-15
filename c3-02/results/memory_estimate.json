@@ -1,0 +1,180 @@
+{
+  "assumptions": {
+    "lut": {
+      "L": 16,
+      "dtype": "uint8",
+      "meta_dtype": "float16",
+      "value_representation": "spline_component"
+    },
+    "K_segments": 11,
+    "excluded": "firmware baseline, alignment/padding, allocator overhead, stack",
+    "head_formula_checked_against_built_artifact_bytes": 479040
+  },
+  "heads": [
+    {
+      "id": "H0",
+      "width": [
+        64,
+        24,
+        16,
+        8,
+        2
+      ],
+      "note": "historical reference run (weights not available); same shape as the fixture",
+      "flash": {
+        "edges": 2064,
+        "bytes_per_edge": {
+          "q_table": 176,
+          "scale_y_min": 44,
+          "coef_base_lut_out": 12
+        },
+        "knots_bytes": 192,
+        "total_bytes": 479040
+      },
+      "ram": {
+        "activation_buffers_bytes": 512,
+        "if_tables_copied_to_sram_bytes": 479552
+      }
+    },
+    {
+      "id": "S1",
+      "width": [
+        64,
+        16,
+        8,
+        2
+      ],
+      "note": "smaller head, same 64-d features (would need training)",
+      "flash": {
+        "edges": 1168,
+        "bytes_per_edge": {
+          "q_table": 176,
+          "scale_y_min": 44,
+          "coef_base_lut_out": 12
+        },
+        "knots_bytes": 144,
+        "total_bytes": 271120
+      },
+      "ram": {
+        "activation_buffers_bytes": 512,
+        "if_tables_copied_to_sram_bytes": 271632
+      }
+    },
+    {
+      "id": "S2",
+      "width": [
+        64,
+        8,
+        2
+      ],
+      "note": "minimal head, same 64-d features (would need training)",
+      "flash": {
+        "edges": 528,
+        "bytes_per_edge": {
+          "q_table": 176,
+          "scale_y_min": 44,
+          "coef_base_lut_out": 12
+        },
+        "knots_bytes": 96,
+        "total_bytes": 122592
+      },
+      "ram": {
+        "activation_buffers_bytes": 512,
+        "if_tables_copied_to_sram_bytes": 123104
+      }
+    },
+    {
+      "id": "S3",
+      "width": [
+        48,
+        24,
+        12,
+        2
+      ],
+      "note": "kan-image-iot code default (feature_dim 48: CNN projection changes too)",
+      "flash": {
+        "edges": 1464,
+        "bytes_per_edge": {
+          "q_table": 176,
+          "scale_y_min": 44,
+          "coef_base_lut_out": 12
+        },
+        "knots_bytes": 144,
+        "total_bytes": 339792
+      },
+      "ram": {
+        "activation_buffers_bytes": 384,
+        "if_tables_copied_to_sram_bytes": 340176
+      }
+    }
+  ],
+  "cnn": {
+    "params": {
+      "weights": 43568,
+      "biases": 136,
+      "float32_bytes": 174816,
+      "int8_bytes": 44656
+    },
+    "activations": [
+      {
+        "tensor": "input",
+        "elements": 49152
+      },
+      {
+        "tensor": "conv1",
+        "elements": 262144
+      },
+      {
+        "tensor": "pool1",
+        "elements": 65536
+      },
+      {
+        "tensor": "conv2",
+        "elements": 98304
+      },
+      {
+        "tensor": "pool2",
+        "elements": 24576
+      },
+      {
+        "tensor": "conv3",
+        "elements": 32768
+      },
+      {
+        "tensor": "pool3",
+        "elements": 8192
+      },
+      {
+        "tensor": "avgpool4x4",
+        "elements": 512
+      },
+      {
+        "tensor": "features",
+        "elements": 64
+      }
+    ],
+    "peak": {
+      "op_by_op": {
+        "elements": 327680,
+        "float32_bytes": 1310720,
+        "int8_bytes": 327680
+      },
+      "fused_blocks": {
+        "elements": 118784,
+        "float32_bytes": 475136,
+        "int8_bytes": 118784
+      },
+      "fused_blocks_streamed_input": {
+        "elements": 93184,
+        "float32_bytes": 372736,
+        "int8_bytes": 93184
+      }
+    },
+    "macs": 28344320
+  },
+  "pipeline_H0": {
+    "flash_float32_cnn_plus_head": 653856,
+    "flash_int8_cnn_plus_head": 523696,
+    "test_image_uint8_bytes": 49152
+  }
+}

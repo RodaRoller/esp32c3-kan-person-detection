@@ -1,0 +1,385 @@
+{
+  "lut_kan_commit": "0041397",
+  "environment": {
+    "python": "3.13.18",
+    "numpy": "2.5.4",
+    "torch": "2.9.1+cu128",
+    "pykan_commit": "ecde4ec3274d3bef1ad737479cf126aed38ab530"
+  },
+  "fixture": {
+    "width": [
+      64,
+      24,
+      16,
+      8,
+      2
+    ],
+    "grid": 5,
+    "k": 3,
+    "seed": 0,
+    "trained": false,
+    "file": "fixture/fixture_head_64-24-16-8-2_seed0.pt",
+    "file_sha256": "81a67e21ae8914e0ae72d57eb0cb091dbe7a5c891a08aa4dbde5bd364132a2ca",
+    "content_sha256": "ea33a83be38261ba19b29f98bd575bdcdae141e4c7504e6d1f150c25c4787ca2",
+    "head_is_plain_sum": {
+      "layer0": {
+        "node_scale_is_1": true,
+        "node_bias_is_0": true,
+        "subnode_scale_is_1": true,
+        "subnode_bias_is_0": true,
+        "symbolic_mask_is_0": true,
+        "spline_mask_is_1": true
+      },
+      "layer1": {
+        "node_scale_is_1": true,
+        "node_bias_is_0": true,
+        "subnode_scale_is_1": true,
+        "subnode_bias_is_0": true,
+        "symbolic_mask_is_0": true,
+        "spline_mask_is_1": true
+      },
+      "layer2": {
+        "node_scale_is_1": true,
+        "node_bias_is_0": true,
+        "subnode_scale_is_1": true,
+        "subnode_bias_is_0": true,
+        "symbolic_mask_is_0": true,
+        "spline_mask_is_1": true
+      },
+      "layer3": {
+        "node_scale_is_1": true,
+        "node_bias_is_0": true,
+        "subnode_scale_is_1": true,
+        "subnode_bias_is_0": true,
+        "symbolic_mask_is_0": true,
+        "spline_mask_is_1": true
+      },
+      "all_ok": true
+    }
+  },
+  "lut_config": {
+    "L": 16,
+    "interp": "linear",
+    "y_range_method": "minmax",
+    "lower_pct": 0.0,
+    "upper_pct": 100.0,
+    "dtype": "uint8",
+    "scheme": "asymmetric",
+    "qmin": 0,
+    "qmax": 255,
+    "meta_dtype": "float16",
+    "value_representation": "spline_component",
+    "oob_behavior": "zero",
+    "boundary_mode": "closed"
+  },
+  "layers": [
+    {
+      "layer": 0,
+      "file": "results/lut/layer0.npz",
+      "in_dim": 64,
+      "out_dim": 24,
+      "edges": 1536,
+      "edge_id": "out_idx * in_dim + in_idx",
+      "K_segments": 11,
+      "L": 16,
+      "knots": [
+        -2.20000005,
+        -1.79999995,
+        -1.39999998,
+        -1.0,
+        -0.600000024,
+        -0.199999988,
+        0.199999988,
+        0.600000024,
+        1.0,
+        1.39999998,
+        1.79999995,
+        2.20000005
+      ],
+      "uniform_dx": null,
+      "shapes": {
+        "knots": [
+          [
+            12
+          ],
+          "float32"
+        ],
+        "q_table": [
+          [
+            1536,
+            11,
+            16
+          ],
+          "uint8"
+        ],
+        "scale": [
+          [
+            1536,
+            11
+          ],
+          "float16"
+        ],
+        "y_min": [
+          [
+            1536,
+            11
+          ],
+          "float16"
+        ],
+        "edge_base_scale": [
+          [
+            1536
+          ],
+          "float32"
+        ],
+        "edge_spline_scale": [
+          [
+            1536
+          ],
+          "float32"
+        ],
+        "edge_out_scale": [
+          [
+            1536
+          ],
+          "float32"
+        ]
+      },
+      "bytes_all_arrays": 356400,
+      "bytes_lut_memory_report": 337968,
+      "content_sha256": "f763c00c24c64acf33e666b7c065cc056565fc9b6aeb6b2525aee7e090613554",
+      "file_sha256": "41717b5aa8ddedaeac532a496597b172dcfed67a41f74c3d38e2e63456051252"
+    },
+    {
+      "layer": 1,
+      "file": "results/lut/layer1.npz",
+      "in_dim": 24,
+      "out_dim": 16,
+      "edges": 384,
+      "edge_id": "out_idx * in_dim + in_idx",
+      "K_segments": 11,
+      "L": 16,
+      "knots": [
+        -2.20000005,
+        -1.79999995,
+        -1.39999998,
+        -1.0,
+        -0.600000024,
+        -0.199999988,
+        0.199999988,
+        0.600000024,
+        1.0,
+        1.39999998,
+        1.79999995,
+        2.20000005
+      ],
+      "uniform_dx": null,
+      "shapes": {
+        "knots": [
+          [
+            12
+          ],
+          "float32"
+        ],
+        "q_table": [
+          [
+            384,
+            11,
+            16
+          ],
+          "uint8"
+        ],
+        "scale": [
+          [
+            384,
+            11
+          ],
+          "float16"
+        ],
+        "y_min": [
+          [
+            384,
+            11
+          ],
+          "float16"
+        ],
+        "edge_base_scale": [
+          [
+            384
+          ],
+          "float32"
+        ],
+        "edge_spline_scale": [
+          [
+            384
+          ],
+          "float32"
+        ],
+        "edge_out_scale": [
+          [
+            384
+          ],
+          "float32"
+        ]
+      },
+      "bytes_all_arrays": 89136,
+      "bytes_lut_memory_report": 84528,
+      "content_sha256": "a3331b776ea7ca0189b4ec653d0c37b1f82f279be12d02f2e094d28e84f3c0a7",
+      "file_sha256": "45cde91382d7af4ed1a282dd090e09be5a112788bf57234b970a6cf7b2e0b2ea"
+    },
+    {
+      "layer": 2,
+      "file": "results/lut/layer2.npz",
+      "in_dim": 16,
+      "out_dim": 8,
+      "edges": 128,
+      "edge_id": "out_idx * in_dim + in_idx",
+      "K_segments": 11,
+      "L": 16,
+      "knots": [
+        -2.20000005,
+        -1.79999995,
+        -1.39999998,
+        -1.0,
+        -0.600000024,
+        -0.199999988,
+        0.199999988,
+        0.600000024,
+        1.0,
+        1.39999998,
+        1.79999995,
+        2.20000005
+      ],
+      "uniform_dx": null,
+      "shapes": {
+        "knots": [
+          [
+            12
+          ],
+          "float32"
+        ],
+        "q_table": [
+          [
+            128,
+            11,
+            16
+          ],
+          "uint8"
+        ],
+        "scale": [
+          [
+            128,
+            11
+          ],
+          "float16"
+        ],
+        "y_min": [
+          [
+            128,
+            11
+          ],
+          "float16"
+        ],
+        "edge_base_scale": [
+          [
+            128
+          ],
+          "float32"
+        ],
+        "edge_spline_scale": [
+          [
+            128
+          ],
+          "float32"
+        ],
+        "edge_out_scale": [
+          [
+            128
+          ],
+          "float32"
+        ]
+      },
+      "bytes_all_arrays": 29744,
+      "bytes_lut_memory_report": 28208,
+      "content_sha256": "b0bc881a09013e50a84694ca94858e53992ac633a2135b8b3572f139e3aed140",
+      "file_sha256": "e5796676cbb189b2ff8ca29f3be5823b42d5148502ea85ad4c1afd4333bf767d"
+    },
+    {
+      "layer": 3,
+      "file": "results/lut/layer3.npz",
+      "in_dim": 8,
+      "out_dim": 2,
+      "edges": 16,
+      "edge_id": "out_idx * in_dim + in_idx",
+      "K_segments": 11,
+      "L": 16,
+      "knots": [
+        -2.20000005,
+        -1.79999995,
+        -1.39999998,
+        -1.0,
+        -0.600000024,
+        -0.199999988,
+        0.199999988,
+        0.600000024,
+        1.0,
+        1.39999998,
+        1.79999995,
+        2.20000005
+      ],
+      "uniform_dx": null,
+      "shapes": {
+        "knots": [
+          [
+            12
+          ],
+          "float32"
+        ],
+        "q_table": [
+          [
+            16,
+            11,
+            16
+          ],
+          "uint8"
+        ],
+        "scale": [
+          [
+            16,
+            11
+          ],
+          "float16"
+        ],
+        "y_min": [
+          [
+            16,
+            11
+          ],
+          "float16"
+        ],
+        "edge_base_scale": [
+          [
+            16
+          ],
+          "float32"
+        ],
+        "edge_spline_scale": [
+          [
+            16
+          ],
+          "float32"
+        ],
+        "edge_out_scale": [
+          [
+            16
+          ],
+          "float32"
+        ]
+      },
+      "bytes_all_arrays": 3760,
+      "bytes_lut_memory_report": 3568,
+      "content_sha256": "627880e243db963f709c06f1a219a5143ab7a166894433c2e07ee12d341bf816",
+      "file_sha256": "c2dee45065780da88227072d2e673e659eab16a44242381d0ee97c409cc86e4a"
+    }
+  ]
+}

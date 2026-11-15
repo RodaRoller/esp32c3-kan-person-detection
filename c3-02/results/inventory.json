@@ -1,0 +1,151 @@
+{
+  "environment": {
+    "python": "3.13.18",
+    "numpy": "2.5.4",
+    "torch": "2.9.1+cu128",
+    "pykan_commit": "ecde4ec3274d3bef1ad737479cf126aed38ab530"
+  },
+  "repos": {
+    "kan-image-iot": {
+      "head": "c2e17e9",
+      "tracked_weight_files": [
+        "model/0.0_state"
+      ]
+    },
+    "lut-kan": {
+      "head": "0041397",
+      "tracked_weight_files": []
+    },
+    "lut-kan-ids": {
+      "head": "b0660d0",
+      "tracked_weight_files": []
+    }
+  },
+  "kan_image_iot_model_folder": {
+    "path": "model/0.0_state",
+    "sha256": "1fcf6774907cb07c436a78c1f192ba2333021d75e55665342bbb5d67f0f52e61",
+    "width": [
+      64,
+      32,
+      24,
+      16,
+      2
+    ],
+    "grid": 5,
+    "k": 3,
+    "grid_range": [
+      -1,
+      1
+    ],
+    "history_txt": "### Round 0 ###\ninit => 0.0",
+    "layers": [
+      {
+        "layer": 0,
+        "in": 64,
+        "out": 32,
+        "scale_sp_value": 0.125,
+        "scale_sp_all_equal_init_value": true,
+        "coef_abs_max": 0.07804782688617706
+      },
+      {
+        "layer": 1,
+        "in": 32,
+        "out": 24,
+        "scale_sp_value": 0.1767766922712326,
+        "scale_sp_all_equal_init_value": true,
+        "coef_abs_max": 0.07700535655021667
+      },
+      {
+        "layer": 2,
+        "in": 24,
+        "out": 16,
+        "scale_sp_value": 0.20412413775920868,
+        "scale_sp_all_equal_init_value": true,
+        "coef_abs_max": 0.07306065410375595
+      },
+      {
+        "layer": 3,
+        "in": 16,
+        "out": 2,
+        "scale_sp_value": 0.25,
+        "scale_sp_all_equal_init_value": true,
+        "coef_abs_max": 0.0636875107884407
+      }
+    ],
+    "is_initial_state": true
+  },
+  "historical_run": {
+    "run": "kan_64_24-16-8_grid5_deg3_img128_bs64_lr0.002_wd1e-05_do0.05",
+    "kan_width": [
+      64,
+      24,
+      16,
+      8,
+      2
+    ],
+    "img_size": 128,
+    "config_kernel_size": [
+      3,
+      3,
+      1
+    ],
+    "instantiated_conv_weights": [
+      [
+        "conv_layers.0.0.weight",
+        [
+          16,
+          3,
+          3,
+          3
+        ]
+      ],
+      [
+        "conv_layers.1.0.weight",
+        [
+          24,
+          16,
+          3,
+          3
+        ]
+      ],
+      [
+        "conv_layers.2.0.weight",
+        [
+          32,
+          24,
+          3,
+          3
+        ]
+      ]
+    ],
+    "param_counts_rebuilt": {
+      "total": 78544,
+      "trainable": 72872,
+      "cnn": 43976,
+      "kan": 34568
+    },
+    "param_counts_recorded": {
+      "Total parameters": 78544,
+      "Trainable parameters": 72872,
+      "CNN parameters": 43976,
+      "KAN parameters": 34568
+    },
+    "counts_match": true,
+    "weights_in_repo": false,
+    "run_files": [
+      "analysis/classification_report.txt",
+      "analysis/inference_time.json",
+      "analysis/model_analysis.json",
+      "analysis/model_analysis.md",
+      "analysis/model_architecture.txt",
+      "analysis/model_summary.txt",
+      "analysis/training_summary.json",
+      "config.json",
+      "figures/confusion_matrix.png",
+      "figures/confusion_matrix_normalized.png",
+      "figures/misclassified_examples.png",
+      "figures/roc_curve.png",
+      "figures/training_metrics.png"
+    ]
+  }
+}
