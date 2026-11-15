@@ -1,6 +1,6 @@
 # C3-02 – Model contract and porting perimeter
 
-First checkpoint · Nov 15, 2026 · @Fred
+First checkpoint · Nov 15, 2026
 
 First feedback on C3-02: sources, candidate model, LUT export format, I/O schema with reference vectors, and Flash/RAM estimates. No training and no porting have been done.
 
