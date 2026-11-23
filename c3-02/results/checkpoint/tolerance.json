@@ -1,0 +1,261 @@
+{
+  "model_id": "M-hist",
+  "inputs": {
+    "validation_feature_vectors": 4830,
+    "synthetic_vectors": 12,
+    "note": "the 4,000 test images are a subset of the 4,830 validation images"
+  },
+  "metric": "|engine - lut_reference| / max(1, |lut_reference|), on h1, h2, h3 and logits",
+  "variants": {
+    "replica": {
+      "kind": "legitimate",
+      "max_abs": {
+        "h1": 0.0,
+        "h2": 0.0,
+        "h3": 0.0,
+        "logits": 0.0
+      },
+      "max_rel_vs_max1": {
+        "h1": 0.0,
+        "h2": 0.0,
+        "h3": 0.0,
+        "logits": 0.0
+      },
+      "decision_mismatches_argmax": 0,
+      "decision_mismatches_historical": 0,
+      "vectors_failing_tolerance": {
+        "1e-6": 0,
+        "2e-6": 0,
+        "1e-5": 0
+      }
+    },
+    "expf_1ulp": {
+      "kind": "legitimate",
+      "max_abs": {
+        "h1": 9.53674316e-07,
+        "h2": 4.76837158e-07,
+        "h3": 7.15255737e-07,
+        "logits": 4.76837158e-07
+      },
+      "max_rel_vs_max1": {
+        "h1": 4.14562718e-07,
+        "h2": 3.20111988e-07,
+        "h3": 3.31565756e-07,
+        "logits": 3.70542741e-07
+      },
+      "decision_mismatches_argmax": 0,
+      "decision_mismatches_historical": 0,
+      "vectors_failing_tolerance": {
+        "1e-6": 0,
+        "2e-6": 0,
+        "1e-5": 0
+      }
+    },
+    "reciprocal_dx": {
+      "kind": "legitimate",
+      "max_abs": {
+        "h1": 4.76837158e-07,
+        "h2": 4.76837158e-07,
+        "h3": 4.76837158e-07,
+        "logits": 4.76837158e-07
+      },
+      "max_rel_vs_max1": {
+        "h1": 3.15650322e-07,
+        "h2": 2.65128544e-07,
+        "h3": 2.87190005e-07,
+        "logits": 3.49373081e-07
+      },
+      "decision_mismatches_argmax": 0,
+      "decision_mismatches_historical": 0,
+      "vectors_failing_tolerance": {
+        "1e-6": 0,
+        "2e-6": 0,
+        "1e-5": 0
+      }
+    },
+    "silu_via_sigmoid": {
+      "kind": "legitimate",
+      "max_abs": {
+        "h1": 9.53674316e-07,
+        "h2": 7.15255737e-07,
+        "h3": 7.15255737e-07,
+        "logits": 5.96046448e-07
+      },
+      "max_rel_vs_max1": {
+        "h1": 4.03289634e-07,
+        "h2": 3.57627869e-07,
+        "h3": 3.57627869e-07,
+        "logits": 4.24300991e-07
+      },
+      "decision_mismatches_argmax": 0,
+      "decision_mismatches_historical": 0,
+      "vectors_failing_tolerance": {
+        "1e-6": 0,
+        "2e-6": 0,
+        "1e-5": 0
+      }
+    },
+    "all_legit_combined": {
+      "kind": "legitimate",
+      "max_abs": {
+        "h1": 9.53674316e-07,
+        "h2": 7.15255737e-07,
+        "h3": 7.15255737e-07,
+        "logits": 4.76837158e-07
+      },
+      "max_rel_vs_max1": {
+        "h1": 4.14562718e-07,
+        "h2": 4.41880907e-07,
+        "h3": 4.2755262e-07,
+        "logits": 4.24300991e-07
+      },
+      "decision_mismatches_argmax": 0,
+      "decision_mismatches_historical": 0,
+      "vectors_failing_tolerance": {
+        "1e-6": 0,
+        "2e-6": 0,
+        "1e-5": 0
+      }
+    },
+    "uniform_segment_formula": {
+      "kind": "deviation, same segments on this grid",
+      "max_abs": {
+        "h1": 1.90734863e-06,
+        "h2": 7.15255737e-07,
+        "h3": 9.53674316e-07,
+        "logits": 4.76837158e-07
+      },
+      "max_rel_vs_max1": {
+        "h1": 4.76837158e-07,
+        "h2": 4.76837158e-07,
+        "h3": 5.36441803e-07,
+        "logits": 4.76837158e-07
+      },
+      "decision_mismatches_argmax": 0,
+      "decision_mismatches_historical": 0,
+      "vectors_failing_tolerance": {
+        "1e-6": 0,
+        "2e-6": 0,
+        "1e-5": 0
+      }
+    },
+    "cell_lookup_no_interp": {
+      "kind": "contract violation",
+      "max_abs": {
+        "h1": 0.0677147508,
+        "h2": 0.0963228941,
+        "h3": 0.124469757,
+        "logits": 0.0813989937
+      },
+      "max_rel_vs_max1": {
+        "h1": 0.0677147508,
+        "h2": 0.0936636925,
+        "h3": 0.0994555354,
+        "logits": 0.0813989937
+      },
+      "decision_mismatches_argmax": 17,
+      "decision_mismatches_historical": 18,
+      "vectors_failing_tolerance": {
+        "1e-6": 4842,
+        "2e-6": 4842,
+        "1e-5": 4842
+      }
+    },
+    "no_oob_zero": {
+      "kind": "contract violation",
+      "max_abs": {
+        "h1": 3.02791595e-05,
+        "h2": 2.66730785e-05,
+        "h3": 1.88350677e-05,
+        "logits": 1.22785568e-05
+      },
+      "max_rel_vs_max1": {
+        "h1": 2.66687561e-05,
+        "h2": 2.66730785e-05,
+        "h3": 1.88350677e-05,
+        "logits": 1.13274221e-05
+      },
+      "decision_mismatches_argmax": 0,
+      "decision_mismatches_historical": 0,
+      "vectors_failing_tolerance": {
+        "1e-6": 1078,
+        "2e-6": 847,
+        "1e-5": 155
+      }
+    },
+    "half_open_boundary": {
+      "kind": "contract violation",
+      "max_abs": {
+        "h1": 1.26063824e-05,
+        "h2": 2.8014183e-06,
+        "h3": 3.15904617e-06,
+        "logits": 2.38418579e-06
+      },
+      "max_rel_vs_max1": {
+        "h1": 1.26063824e-05,
+        "h2": 2.8014183e-06,
+        "h3": 3.15904617e-06,
+        "logits": 2.38418579e-06
+      },
+      "decision_mismatches_argmax": 0,
+      "decision_mismatches_historical": 0,
+      "vectors_failing_tolerance": {
+        "1e-6": 2,
+        "2e-6": 2,
+        "1e-5": 1
+      }
+    },
+    "metadata_as_float16_math": {
+      "kind": "contract violation",
+      "max_abs": {
+        "h1": 0.000263661146,
+        "h2": 0.000189781189,
+        "h3": 0.000191360712,
+        "logits": 0.000149130821
+      },
+      "max_rel_vs_max1": {
+        "h1": 0.000263661146,
+        "h2": 0.000177116622,
+        "h3": 0.000191360712,
+        "logits": 0.000149130821
+      },
+      "decision_mismatches_argmax": 0,
+      "decision_mismatches_historical": 0,
+      "vectors_failing_tolerance": {
+        "1e-6": 4842,
+        "2e-6": 4842,
+        "1e-5": 4842
+      }
+    }
+  },
+  "largest_legitimate_difference": 4.41880907e-07,
+  "smallest_violation_difference": 1.26063824e-05,
+  "lut_vs_pykan_logit_max_abs": 0.0015155226,
+  "smallest_abs_margin_lut_reference_validation": 0.000119725242,
+  "knot_discontinuity_weighted": {
+    "layer0": {
+      "median": 6.85186957e-07,
+      "p90": 1.36070702e-05,
+      "max": 0.000277573329,
+      "share_above_1e-5": 0.134700521
+    },
+    "layer1": {
+      "median": 2.10975828e-06,
+      "p90": 1.67567316e-05,
+      "max": 0.000104069311,
+      "share_above_1e-5": 0.184635417
+    },
+    "layer2": {
+      "median": 1.90672412e-06,
+      "p90": 1.44737697e-05,
+      "max": 0.000168668059,
+      "share_above_1e-5": 0.159375
+    },
+    "layer3": {
+      "median": 4.73463116e-06,
+      "p90": 2.94824334e-05,
+      "max": 0.000133409214,
+      "share_above_1e-5": 0.3
+    }
+  }
+}

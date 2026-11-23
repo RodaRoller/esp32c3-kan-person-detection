@@ -10,6 +10,50 @@
     "excluded": "firmware baseline, alignment/padding, allocator overhead, stack",
     "head_formula_checked_against_built_artifact_bytes": 479040
   },
+  "head_budget_H0": [
+    {
+      "item": "Persistent arrays: q tables, FP16 scale/y_min, 3 float32 coefficients per edge, knots",
+      "memory": "flash (.rodata, read through the cache)",
+      "bytes": 479040,
+      "status": "computed"
+    },
+    {
+      "item": "Activation buffers: two ping-pong float32 buffers of the widest layer",
+      "memory": "SRAM",
+      "bytes": 512,
+      "status": "computed"
+    },
+    {
+      "item": "Workspace: per-input scalars (SiLU, segment, u, w); 4 B per input if SiLU is precomputed per layer",
+      "memory": "SRAM (stack)",
+      "bytes": "0 to 256",
+      "status": "estimated"
+    },
+    {
+      "item": "Reference vectors for the on-device test (19 x (input + h1 + h2 + h3 + logits), float32)",
+      "memory": "flash",
+      "bytes": 8664,
+      "status": "estimated (test build only)"
+    },
+    {
+      "item": "Stack of the inference task",
+      "memory": "SRAM",
+      "bytes": null,
+      "status": "to measure (uxTaskGetStackHighWaterMark)"
+    },
+    {
+      "item": "Firmware: code, Arduino-ESP32/ESP-IDF runtime, heap",
+      "memory": "flash + SRAM",
+      "bytes": null,
+      "status": "to measure (pio run -t size, ESP.getFreeHeap())"
+    }
+  ],
+  "checkpoint_cross_check": {
+    "lut_bytes_checkpoint": 479040,
+    "lut_bytes_formula": 479040,
+    "cnn_weights_checkpoint": 43568,
+    "cnn_weights_formula": 43568
+  },
   "heads": [
     {
       "id": "H0",
@@ -20,7 +64,7 @@
         8,
         2
       ],
-      "note": "historical reference run (weights not available); same shape as the fixture",
+      "note": "historical run; trained weights = M-hist (private); same shape as the fixture F0",
       "flash": {
         "edges": 2064,
         "bytes_per_edge": {
@@ -176,5 +220,6 @@
     "flash_float32_cnn_plus_head": 653856,
     "flash_int8_cnn_plus_head": 523696,
     "test_image_uint8_bytes": 49152
-  }
+  },
+  "cnn_status": "analytical scenario: int8 quantisation and block fusion are not implemented or measured"
 }

@@ -1,0 +1,103 @@
+{
+  "model_id": "M-hist",
+  "private_file": "private/c3-02/reference_vectors_mhist.json",
+  "private_file_sha256": "e077b61e62d1fcd0a5b973020a90cc0d372caa5b06f614f6eedf893ae0c03c7a",
+  "published_here": false,
+  "vectors": [
+    {
+      "id": "R01_confident_person",
+      "description": "largest margin z1 - z0 (label person)",
+      "source": "validation image"
+    },
+    {
+      "id": "R02_confident_no_person",
+      "description": "smallest margin z1 - z0 (label no_person)",
+      "source": "validation image"
+    },
+    {
+      "id": "R03_near_argmax_above",
+      "description": "smallest positive margin (closest to theta = 0) (label no_person)",
+      "source": "validation image"
+    },
+    {
+      "id": "R04_near_argmax_below",
+      "description": "largest negative margin (closest to theta = 0) (label person)",
+      "source": "validation image"
+    },
+    {
+      "id": "R05_near_historical_above",
+      "description": "closest to the historical threshold, above (label person)",
+      "source": "validation image"
+    },
+    {
+      "id": "R06_near_historical_below",
+      "description": "closest to the historical threshold, below (label no_person)",
+      "source": "validation image"
+    },
+    {
+      "id": "R07_most_inputs_out_of_domain_l0",
+      "description": "most layer-0 inputs above 2.2 (label person)",
+      "source": "validation image"
+    },
+    {
+      "id": "R08_most_negative_h1",
+      "description": "most negative layer-1 input (deep out of domain) (next best: the top image is already used) (label person)",
+      "source": "validation image"
+    },
+    {
+      "id": "R09_most_out_of_domain_l3",
+      "description": "most layer-3 inputs outside [-2.2, 2.2] (label no_person)",
+      "source": "validation image"
+    },
+    {
+      "id": "R10_false_negative",
+      "description": "person image classified no_person with the largest error (label person)",
+      "source": "validation image"
+    },
+    {
+      "id": "S00_zeros",
+      "description": "all inputs 0",
+      "source": "synthetic (same rule as the F0 set)"
+    },
+    {
+      "id": "S01_knots",
+      "description": "x_i = knot[i mod 12]: every knot incl. both domain ends (closed boundary)",
+      "source": "synthetic (same rule as the F0 set)"
+    },
+    {
+      "id": "S02_knots_shifted",
+      "description": "x_i = knot[(i+6) mod 12]: same corner cases on other inputs",
+      "source": "synthetic (same rule as the F0 set)"
+    },
+    {
+      "id": "S03_lut_samples",
+      "description": "x_i = sample[k=i mod 11][l=5i mod 16]: exact LUT sample points (w = 0)",
+      "source": "synthetic (same rule as the F0 set)"
+    },
+    {
+      "id": "S04_sample_midpoints",
+      "description": "midpoint of two consecutive samples (w = 0.5)",
+      "source": "synthetic (same rule as the F0 set)"
+    },
+    {
+      "id": "S05_out_of_domain",
+      "description": "just outside both ends, then +-2.5, +-3, +-10: spline = 0, base branch kept",
+      "source": "synthetic (same rule as the F0 set)"
+    },
+    {
+      "id": "N01_nan",
+      "description": "input 0 = NaN, others from R01 -> reference output recorded; required C++ behaviour: reject the input",
+      "source": "synthetic"
+    },
+    {
+      "id": "N02_pos_inf",
+      "description": "input 0 = +Inf, others from R01 -> reference output recorded; required C++ behaviour: reject the input",
+      "source": "synthetic"
+    },
+    {
+      "id": "N03_neg_inf",
+      "description": "input 0 = -Inf, others from R01 -> reference output recorded; required C++ behaviour: reject the input",
+      "source": "synthetic"
+    }
+  ]
+}

@@ -13,9 +13,11 @@ Each checkpoint is a folder plus a git tag on the commit that was delivered. Ope
 | Id | Folder | Tag | Content | Status |
 |---|---|---|---|---|
 | C3-01 | [`c3-01/`](c3-01/) | `c3-01` | Minimal ESP32-C3 project in Wokwi: deterministic serial output and smoke test | Approved |
-| C3-02 | [`c3-02/`](c3-02/) | `c3-02-r1` | Model contract: sources and commits, candidate checkpoint, LUT export format, reference vectors, Flash/RAM estimates | In review |
+| C3-02 | [`c3-02/`](c3-02/) | `c3-02-r1` (draft), `c3-02-r2` (final) | Model contract: sources and commits, models F0 and M-hist, LUT export format, reference vectors, acceptance criterion, Flash/RAM, proposed perimeter | In review |
 
 The C++ engine will live in `firmware/` from the next checkpoint on.
+
+The trained checkpoint used from C3-02 on is not published: see [`c3-02/README.md`](c3-02/README.md) for its name, SHA-256 and where to place it locally.
 
 ## Upstream sources
 

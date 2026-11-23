@@ -1,0 +1,247 @@
+{
+  "model_id": "M-hist",
+  "checkpoint_sha256": "03b4132217626a7a4e3fc91813ad84ea9794152409e042569ec515c20c5d9ffc",
+  "data": "kan-image-iot data/processed/vww_subset, eval preprocessing: Resize(128,128), ToTensor, Normalize(ImageNet mean/std)",
+  "split_overlap": {
+    "files": {
+      "train": 100000,
+      "val": 4830,
+      "test": 4000
+    },
+    "test_in_val": 4000,
+    "test_in_train": 0,
+    "val_in_train": 0
+  },
+  "thresholds": {
+    "argmax": {
+      "rule": "person if z1 - z0 > 0 (ties -> no_person)"
+    },
+    "historical": {
+      "p_threshold": 0.37709295749664307,
+      "rule_in_package": "p(person) >= t",
+      "equivalent_margin_threshold": -0.50190557
+    }
+  },
+  "splits": {
+    "val": {
+      "images": 4830,
+      "per_class": {
+        "no_person": 2415,
+        "person": 2415
+      },
+      "layerwise_vs_full_pykan_max_abs": 0.0,
+      "lut_vs_pykan": {
+        "logit_mae": 0.000196848647,
+        "logit_max_abs": 0.0015155226,
+        "hidden_max_abs": {
+          "h1": 0.00163638592,
+          "h2": 0.00137126446,
+          "h3": 0.00188487768
+        },
+        "max_abs_logit": 2.0244205,
+        "decision_agreement_argmax": 4830,
+        "decision_agreement_historical": 4830
+      },
+      "metrics": {
+        "pykan_argmax": {
+          "accuracy": 0.81884058,
+          "tp": 1821,
+          "tn": 2134,
+          "fp": 281,
+          "fn": 594
+        },
+        "lut_argmax": {
+          "accuracy": 0.81884058,
+          "tp": 1821,
+          "tn": 2134,
+          "fp": 281,
+          "fn": 594
+        },
+        "pykan_historical_threshold": {
+          "accuracy": 0.815942029,
+          "tp": 2011,
+          "tn": 1930,
+          "fp": 485,
+          "fn": 404
+        },
+        "lut_historical_threshold": {
+          "accuracy": 0.815942029,
+          "tp": 2011,
+          "tn": 1930,
+          "fp": 485,
+          "fn": 404
+        }
+      },
+      "margins_lut": {
+        "min_abs_margin": 0.000119725242,
+        "count_abs_margin_below": {
+          "1e-2": 15,
+          "1e-3": 2,
+          "1e-4": 0
+        },
+        "min_abs_distance_to_historical_threshold": 0.000823378563,
+        "count_distance_to_historical_threshold_below": {
+          "1e-2": 14,
+          "1e-3": 1,
+          "1e-4": 0
+        },
+        "exact_ties": 0
+      },
+      "domain": {
+        "x_min": -2.20000005,
+        "x_max": 2.20000005,
+        "pykan_chain": {
+          "layer0": {
+            "values": 309120,
+            "min": 0.0,
+            "max": 6.78632307,
+            "below_domain_percent": 0.0,
+            "above_domain_percent": 0.64376294,
+            "vectors_with_any_input_outside": 991
+          },
+          "layer1": {
+            "values": 115920,
+            "min": -12.3495483,
+            "max": 5.26350927,
+            "below_domain_percent": 2.32574189,
+            "above_domain_percent": 0.415804003,
+            "vectors_with_any_input_outside": 899
+          },
+          "layer2": {
+            "values": 77280,
+            "min": -3.98103046,
+            "max": 3.89004731,
+            "below_domain_percent": 0.533126294,
+            "above_domain_percent": 0.254917184,
+            "vectors_with_any_input_outside": 189
+          },
+          "layer3": {
+            "values": 38640,
+            "min": -3.5321846,
+            "max": 3.98296237,
+            "below_domain_percent": 0.33126294,
+            "above_domain_percent": 1.67701863,
+            "vectors_with_any_input_outside": 509
+          }
+        }
+      },
+      "non_finite_outputs": 0,
+      "vs_archived_scores": {
+        "labels_identical": true,
+        "fp32_logit_max_abs_diff": 2.08616257e-06,
+        "fp32_argmax_agreement": 4830
+      }
+    },
+    "test": {
+      "images": 4000,
+      "per_class": {
+        "no_person": 2000,
+        "person": 2000
+      },
+      "layerwise_vs_full_pykan_max_abs": 0.0,
+      "lut_vs_pykan": {
+        "logit_mae": 0.000198740119,
+        "logit_max_abs": 0.0015155226,
+        "hidden_max_abs": {
+          "h1": 0.00163638592,
+          "h2": 0.00137126446,
+          "h3": 0.00188487768
+        },
+        "max_abs_logit": 2.0244205,
+        "decision_agreement_argmax": 4000,
+        "decision_agreement_historical": 4000
+      },
+      "metrics": {
+        "pykan_argmax": {
+          "accuracy": 0.814,
+          "tp": 1497,
+          "tn": 1759,
+          "fp": 241,
+          "fn": 503
+        },
+        "lut_argmax": {
+          "accuracy": 0.814,
+          "tp": 1497,
+          "tn": 1759,
+          "fp": 241,
+          "fn": 503
+        },
+        "pykan_historical_threshold": {
+          "accuracy": 0.81625,
+          "tp": 1664,
+          "tn": 1601,
+          "fp": 399,
+          "fn": 336
+        },
+        "lut_historical_threshold": {
+          "accuracy": 0.81625,
+          "tp": 1664,
+          "tn": 1601,
+          "fp": 399,
+          "fn": 336
+        }
+      },
+      "margins_lut": {
+        "min_abs_margin": 0.000119725242,
+        "count_abs_margin_below": {
+          "1e-2": 13,
+          "1e-3": 2,
+          "1e-4": 0
+        },
+        "min_abs_distance_to_historical_threshold": 0.00109052658,
+        "count_distance_to_historical_threshold_below": {
+          "1e-2": 12,
+          "1e-3": 0,
+          "1e-4": 0
+        },
+        "exact_ties": 0
+      },
+      "domain": {
+        "x_min": -2.20000005,
+        "x_max": 2.20000005,
+        "pykan_chain": {
+          "layer0": {
+            "values": 256000,
+            "min": 0.0,
+            "max": 6.78632307,
+            "below_domain_percent": 0.0,
+            "above_domain_percent": 0.640234375,
+            "vectors_with_any_input_outside": 817
+          },
+          "layer1": {
+            "values": 96000,
+            "min": -10.3304062,
+            "max": 5.26350927,
+            "below_domain_percent": 2.29375,
+            "above_domain_percent": 0.402083333,
+            "vectors_with_any_input_outside": 728
+          },
+          "layer2": {
+            "values": 64000,
+            "min": -3.98103046,
+            "max": 3.89004731,
+            "below_domain_percent": 0.5375,
+            "above_domain_percent": 0.259375,
+            "vectors_with_any_input_outside": 154
+          },
+          "layer3": {
+            "values": 32000,
+            "min": -3.5321846,
+            "max": 3.98296237,
+            "below_domain_percent": 0.328125,
+            "above_domain_percent": 1.678125,
+            "vectors_with_any_input_outside": 427
+          }
+        }
+      },
+      "non_finite_outputs": 0,
+      "vs_archived_scores": {
+        "labels_identical": true,
+        "fp32_logit_max_abs_diff": 2.08616257e-06,
+        "fp32_argmax_agreement": 4000,
+        "lut_logit_max_abs_diff": 2.02655792e-06,
+        "lut_argmax_agreement": 4000
+      }
+    }
+  }
+}

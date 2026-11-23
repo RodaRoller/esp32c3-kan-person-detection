@@ -1,0 +1,328 @@
+{
+  "model_id": "M-hist",
+  "checkpoint": {
+    "file": "kan_person_detector_best.pt",
+    "sha256": "03b4132217626a7a4e3fc91813ad84ea9794152409e042569ec515c20c5d9ffc",
+    "source": "KAN_Thesis_Code_FINAL.rar (6 Oct 2026), artifacts/checkpoint/",
+    "expected_local_path": "private/checkpoint/kan_person_detector_best.pt",
+    "published_here": false
+  },
+  "contents": {
+    "epoch": 49,
+    "val_acc_percent": 81.884058,
+    "used_ema": true,
+    "batch_size": 512,
+    "keys": [
+      "epoch",
+      "history",
+      "model_info",
+      "model_state_dict",
+      "optimizer_state_dict",
+      "used_ema",
+      "val_acc"
+    ]
+  },
+  "matches_expected": true,
+  "load": {
+    "loader": "torch.load(weights_only=True)",
+    "class": "kan-image-iot src/models/kan_model.py::KANImageClassifier",
+    "constructor_args": {
+      "input_channels": 3,
+      "conv_channels": [
+        16,
+        24,
+        32
+      ],
+      "img_size": 128,
+      "num_classes": 2,
+      "feature_dim": 64,
+      "kan_hidden_dims": [
+        24,
+        16,
+        8
+      ],
+      "kan_grid": 5,
+      "kan_degree": 3,
+      "use_batch_norm": true,
+      "dropout_rate": 0.05,
+      "activation_l1": 1e-05,
+      "stochastic_depth_rate": 0.1,
+      "seed": 42
+    },
+    "strict": true,
+    "result": "all keys matched"
+  },
+  "params": {
+    "all_params_total": 78544,
+    "all_params_cnn": 43976,
+    "all_params_kan": 34568,
+    "trainable_total": 72872,
+    "trainable_cnn": 43976,
+    "trainable_kan": 28896,
+    "cnn_conv_weight_shapes": {
+      "preprocessor.conv_layers.0.0.weight": [
+        16,
+        3,
+        3,
+        3
+      ],
+      "preprocessor.conv_layers.1.0.weight": [
+        24,
+        16,
+        3,
+        3
+      ],
+      "preprocessor.conv_layers.2.0.weight": [
+        32,
+        24,
+        3,
+        3
+      ]
+    },
+    "cnn_conv_linear_weight_elements": 43568,
+    "cnn_state_tensors_float_elements": 44248,
+    "kan_trainable_tensors": [
+      "coef",
+      "scale_base",
+      "scale_sp"
+    ]
+  },
+  "head_is_plain_sum": {
+    "layer0": {
+      "node_scale_is_1": true,
+      "node_bias_is_0": true,
+      "subnode_scale_is_1": true,
+      "subnode_bias_is_0": true,
+      "symbolic_mask_is_0": true,
+      "spline_mask_is_1": true
+    },
+    "layer1": {
+      "node_scale_is_1": true,
+      "node_bias_is_0": true,
+      "subnode_scale_is_1": true,
+      "subnode_bias_is_0": true,
+      "symbolic_mask_is_0": true,
+      "spline_mask_is_1": true
+    },
+    "layer2": {
+      "node_scale_is_1": true,
+      "node_bias_is_0": true,
+      "subnode_scale_is_1": true,
+      "subnode_bias_is_0": true,
+      "symbolic_mask_is_0": true,
+      "spline_mask_is_1": true
+    },
+    "layer3": {
+      "node_scale_is_1": true,
+      "node_bias_is_0": true,
+      "subnode_scale_is_1": true,
+      "subnode_bias_is_0": true,
+      "symbolic_mask_is_0": true,
+      "spline_mask_is_1": true
+    },
+    "all_ok": true
+  },
+  "grids": {
+    "layer0": {
+      "one_grid_for_all_inputs": true,
+      "x_min": -2.20000005,
+      "x_max": 2.20000005,
+      "points": 12
+    },
+    "layer1": {
+      "one_grid_for_all_inputs": true,
+      "x_min": -2.20000005,
+      "x_max": 2.20000005,
+      "points": 12
+    },
+    "layer2": {
+      "one_grid_for_all_inputs": true,
+      "x_min": -2.20000005,
+      "x_max": 2.20000005,
+      "points": 12
+    },
+    "layer3": {
+      "one_grid_for_all_inputs": true,
+      "x_min": -2.20000005,
+      "x_max": 2.20000005,
+      "points": 12
+    }
+  },
+  "lut_config": {
+    "L": 16,
+    "interp": "linear",
+    "y_range_method": "minmax",
+    "lower_pct": 0.0,
+    "upper_pct": 100.0,
+    "dtype": "uint8",
+    "scheme": "asymmetric",
+    "qmin": 0,
+    "qmax": 255,
+    "meta_dtype": "float16",
+    "value_representation": "spline_component",
+    "oob_behavior": "zero",
+    "boundary_mode": "closed"
+  },
+  "lut_layers": [
+    {
+      "layer": 0,
+      "in_dim": 64,
+      "out_dim": 24,
+      "edges": 1536,
+      "bytes_all_arrays": 356400,
+      "content_sha256": "8f1d3c0a0be2447da58d1ea62d1865250ed5ac217acef384b4b6f1088a91bc63",
+      "private_file": "private/c3-02/lut/layer0.npz",
+      "vs_archive": {
+        "archive_file": "layer0_64x24_L16_uint8_asym_fp16.npz",
+        "archive_file_sha256": "8beaabc2f04f44ac52ce4c3633e7d5dda61884dba3c38bd55671732e4bd78b71",
+        "arrays": {
+          "knots": {
+            "identical": true
+          },
+          "q_table": {
+            "identical": true
+          },
+          "scale": {
+            "identical": true
+          },
+          "y_min": {
+            "identical": true
+          },
+          "edge_base_scale": {
+            "identical": true
+          },
+          "edge_spline_scale": {
+            "identical": true
+          },
+          "edge_out_scale": {
+            "identical": true
+          }
+        },
+        "all_identical": true
+      }
+    },
+    {
+      "layer": 1,
+      "in_dim": 24,
+      "out_dim": 16,
+      "edges": 384,
+      "bytes_all_arrays": 89136,
+      "content_sha256": "027f812ab00e495c261c2ef3164218623cb1221db6101db3bfae1f92da95c1f6",
+      "private_file": "private/c3-02/lut/layer1.npz",
+      "vs_archive": {
+        "archive_file": "layer1_24x16_L16_uint8_asym_fp16.npz",
+        "archive_file_sha256": "f1fce685e92c9fc86b3ff44c95f1ff3502f01b16927e314acc0b00ac307ea982",
+        "arrays": {
+          "knots": {
+            "identical": true
+          },
+          "q_table": {
+            "identical": true
+          },
+          "scale": {
+            "identical": true
+          },
+          "y_min": {
+            "identical": true
+          },
+          "edge_base_scale": {
+            "identical": true
+          },
+          "edge_spline_scale": {
+            "identical": true
+          },
+          "edge_out_scale": {
+            "identical": true
+          }
+        },
+        "all_identical": true
+      }
+    },
+    {
+      "layer": 2,
+      "in_dim": 16,
+      "out_dim": 8,
+      "edges": 128,
+      "bytes_all_arrays": 29744,
+      "content_sha256": "55abf10eb50ed3bfed26078493c8036bc0e034445d026eef638e90e458ee4943",
+      "private_file": "private/c3-02/lut/layer2.npz",
+      "vs_archive": {
+        "archive_file": "layer2_16x8_L16_uint8_asym_fp16.npz",
+        "archive_file_sha256": "cb2470c2ab14085771d9a9ac5d5d8ac35e51b3485f5556b4e99a45ecc3e9227d",
+        "arrays": {
+          "knots": {
+            "identical": true
+          },
+          "q_table": {
+            "identical": true
+          },
+          "scale": {
+            "identical": true
+          },
+          "y_min": {
+            "identical": true
+          },
+          "edge_base_scale": {
+            "identical": true
+          },
+          "edge_spline_scale": {
+            "identical": true
+          },
+          "edge_out_scale": {
+            "identical": true
+          }
+        },
+        "all_identical": true
+      }
+    },
+    {
+      "layer": 3,
+      "in_dim": 8,
+      "out_dim": 2,
+      "edges": 16,
+      "bytes_all_arrays": 3760,
+      "content_sha256": "f553ad5806dd85013895578147ab33fd3d9344ae067d32890b8ca78f30e8468a",
+      "private_file": "private/c3-02/lut/layer3.npz",
+      "vs_archive": {
+        "archive_file": "layer3_8x2_L16_uint8_asym_fp16.npz",
+        "archive_file_sha256": "0929dc3c6b0f4e89119788b67be6c7e3ed9a4e1adcef78c605b12344de26658d",
+        "arrays": {
+          "knots": {
+            "identical": true
+          },
+          "q_table": {
+            "identical": true
+          },
+          "scale": {
+            "identical": true
+          },
+          "y_min": {
+            "identical": true
+          },
+          "edge_base_scale": {
+            "identical": true
+          },
+          "edge_spline_scale": {
+            "identical": true
+          },
+          "edge_out_scale": {
+            "identical": true
+          }
+        },
+        "all_identical": true
+      }
+    }
+  ],
+  "lut_total_bytes": 479040,
+  "lut_identical_to_archive": true,
+  "upstream_commits": {
+    "kan-image-iot": "c2e17e9",
+    "lut-kan": "0041397"
+  },
+  "environment": {
+    "python": "3.13.18",
+    "numpy": "2.5.4",
+    "torch": "2.9.1+cu128",
+    "pykan_commit": "ecde4ec3274d3bef1ad737479cf126aed38ab530"
+  }
+}

@@ -2,8 +2,14 @@
 .venv/
 __pycache__/
 *.pyc
+# pykan auto-save folder, created when kan-image-iot builds a KAN (untrained initial state)
+model/
 
 # Operating system and editors
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Private material: trained checkpoint and everything derived from it (LUTs, vectors, scores).
+# Not to be published (agreed with the supervisor). See c3-02/README.md for the expected layout.
+private/

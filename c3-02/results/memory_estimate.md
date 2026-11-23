@@ -1,3 +1,12 @@
+| Item | Memory | Bytes | Status |
+|---|---|---|---|
+| Persistent arrays: q tables, FP16 scale/y_min, 3 float32 coefficients per edge, knots | flash (.rodata, read through the cache) | 479 040 | computed |
+| Activation buffers: two ping-pong float32 buffers of the widest layer | SRAM | 512 | computed |
+| Workspace: per-input scalars (SiLU, segment, u, w); 4 B per input if SiLU is precomputed per layer | SRAM (stack) | 0 to 256 | estimated |
+| Reference vectors for the on-device test (19 x (input + h1 + h2 + h3 + logits), float32) | flash | 8 664 | estimated (test build only) |
+| Stack of the inference task | SRAM | - | to measure (uxTaskGetStackHighWaterMark) |
+| Firmware: code, Arduino-ESP32/ESP-IDF runtime, heap | flash + SRAM | - | to measure (pio run -t size, ESP.getFreeHeap()) |
+
 | Id | Head | Edges | Flash (B) | RAM, tables in flash (B) | RAM, tables copied to SRAM (B) |
 |---|---|---|---|---|---|
 | H0 | 64→24→16→8→2 | 2 064 | 479 040 | 512 | 479 552 |
@@ -13,3 +22,4 @@
 
 CNN parameters (BN folded): 43 568 weights + 136 biases; float32 174 816 B, int8 44 656 B; 28 344 320 MAC per image.
 Pipeline flash (CNN + H0): float32 653 856 B, int8 CNN 523 696 B; one 128x128 RGB test image 49 152 B.
+ 

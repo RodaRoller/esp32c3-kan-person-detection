@@ -12,48 +12,66 @@ import subprocess
 import sys
 from pathlib import Path
 
-# Folder layout: c3-02/scripts/common.py -> c3-02/
+
+
 C302_DIR = Path(__file__).resolve().parents[1]
 RESULTS_DIR = C302_DIR / "results"
 FIXTURE_DIR = C302_DIR / "fixture"
 
-# Upstream commits this analysis was produced against (git rev-parse --short HEAD).
 PINNED_COMMITS = {
     "kan-image-iot": "c2e17e9",
     "lut-kan": "0041397",
     "lut-kan-ids": "b0660d0",
 }
 
-# pykan commit pinned in lut-kan/requirements-lock-win.txt (reports as version 0.2.8).
 PYKAN_COMMIT = "ecde4ec3274d3bef1ad737479cf126aed38ab530"
 
 # Historical reference run in kan-image-iot/experiment_data.
 HISTORICAL_RUN = "kan_64_24-16-8_grid5_deg3_img128_bs64_lr0.002_wd1e-05_do0.05"
 
-# Thesis LUT contract (lut-kan format_version 2). Argument names follow
-# lut-kan/src/quant/lut_builder.py::build_lut_for_edges.
 LUT_CFG = {
-    "L": 16,                                  # samples per segment, endpoints included
+    "L": 16,                                  
     "interp": "linear",
     "y_range_method": "minmax",
-    "lower_pct": 0.0,                         # unused with minmax
-    "upper_pct": 100.0,                       # unused with minmax
+    "lower_pct": 0.0,                         
+    "upper_pct": 100.0,                       
     "dtype": "uint8",
-    "scheme": "asymmetric",                   # y = y_min + scale * q
+    "scheme": "asymmetric",                   
     "qmin": 0,
     "qmax": 255,
-    "meta_dtype": "float16",                  # scale and y_min per segment
-    "value_representation": "spline_component",  # LUT holds the spline only
-    "oob_behavior": "zero",                   # spline = 0 outside the domain, base branch kept
-    "boundary_mode": "closed",                # domain is [x_min, x_max]
+    "meta_dtype": "float16",                  
+    "value_representation": "spline_component",  
+    "oob_behavior": "zero",                   
+    "boundary_mode": "closed",                
 }
 
-# Deterministic head used for the contract vectors. It is NOT a trained model:
-# pykan initial weights for the historical architecture, fixed by the seed.
+
 FIXTURE = {"width": [64, 24, 16, 8, 2], "grid": 5, "k": 3, "seed": 0}
 FIXTURE_NAME = "fixture_head_64-24-16-8-2_seed0"
 
 CLASS_NAMES = ["no_person", "person"]  # order of the two logits
+
+
+REPO_DIR = C302_DIR.parent
+PRIVATE_DIR = REPO_DIR / "private"
+PRIVATE_C302 = PRIVATE_DIR / "c3-02"
+CHECKPOINT = {
+    "id": "M-hist",
+    "file": "kan_person_detector_best.pt",
+    "sha256": "03b4132217626a7a4e3fc91813ad84ea9794152409e042569ec515c20c5d9ffc",
+    "local_path": "private/checkpoint/kan_person_detector_best.pt",   # relative to the repo root
+    "source": "KAN_Thesis_Code_FINAL.rar (6 Oct 2026), artifacts/checkpoint/",
+    "expected": {"epoch": 49, "batch_size": 512, "used_ema": True},
+}
+EXP01_MODEL_ARGS = {
+    "input_channels": 3, "conv_channels": [16, 24, 32], "img_size": 128, "num_classes": 2,
+    "feature_dim": 64, "kan_hidden_dims": [24, 16, 8], "kan_grid": 5, "kan_degree": 3,
+    "use_batch_norm": True, "dropout_rate": 0.05, "activation_l1": 1e-5,
+    "stochastic_depth_rate": 0.1, "seed": 42,
+}
+EVAL_MEAN = (0.485, 0.456, 0.406)
+EVAL_STD = (0.229, 0.224, 0.225)
+HISTORICAL_THRESHOLD_P = 0.37709295749664307
 
 
 def sha256(path: Path) -> str:
