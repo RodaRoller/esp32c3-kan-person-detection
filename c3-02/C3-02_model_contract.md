@@ -179,12 +179,13 @@ Two observations follow from the table. Some violations change no decision on th
    - A non-finite feature means a fault upstream.
    - One `isfinite` check per input (64) is enough: with finite inputs every later value is finite.
    - This is a declared deviation from the reference.
-5. **Ties.** z1 = z0 gives no_person, so the rule is "person if d > θ", with strict inequality. It is the convention of argmax in torch and numpy, and in kan-image-iot (`analyze.py` L207). The historical package applied p ≥ t, which differs only on exact equality; no exact tie occurs in the 4,830 images.
+5. **Ties.** z1 = z0 gives no_person, so the rule is "person if d > θ", with strict inequality. It is the convention of argmax in torch and numpy, and in kan-image-iot (`analyze.py` L207). The historical package applied p ≥ t, which differs only on exact equality; no exact tie z1 = z0 occurs in the 4,830 validation images.
 6. **Decision rule vs historical threshold.** The engine outputs the margin d = z1 − z0 and compares it with a threshold θ declared as a build parameter.
    - **Conformance (θ = 0):** this is the argmax, the rule of kan-image-iot and of the reference. All acceptance tests use it.
    - **Historical operating point:** t = 0.3770929575 on p(person), selected for maximum F1 on validation and applied as p ≥ t. It is equivalent to d ≥ ln(t/(1−t)) = −0.5019. It is reported for comparison: on the test set, false negatives go from 503 to 336 and false positives from 241 to 399.
    - Choosing it for deployment is an application decision, not part of the port. Its test figures are not independent (§2).
    - The margin also avoids computing a softmax on the chip.
+   - In the archived FP32 validation scores one positive image has p exactly equal to t: the F1-optimal threshold coincides with the score of that image. The historical comparison therefore depends on the rule p ≥ t. With p ≥ t that image counts as person (2,496 positives at t); with p > t it would count as no_person (2,495). The conformance rule of this work is d > 0, with ties → no_person.
 
 ## 7. Flash and RAM
 
