@@ -1,8 +1,8 @@
 # C3-02 – Model contract and porting perimeter
 
-Final checkpoint (r2) · Nov 23, 2026 · supersedes the first draft (tag `c3-02-r1`, Nov 15)
+Final checkpoint (r2) · Nov 23, 2026 · supersedes the first draft (tag `c3-02-r1`, Nov 15) · approved Nov 24, 2026.
 
-The trained historical checkpoint (**M-hist**) loads strictly into the public kan-image-iot model and reproduces the archived scores. Its LUT v2 export is byte-identical to the historical LUT artifacts. I propose this perimeter for approval:
+The trained historical checkpoint (**M-hist**) loads strictly into the public kan-image-iot model and reproduces the archived scores. Its LUT v2 export is byte-identical to the historical LUT artifacts. The supervisor approved this perimeter on Nov 24, 2026:
 
 - **First functional result:** the KAN/LUT head of M-hist on the ESP32-C3, fed with precomputed features.
 - **Kept separate:** the full camera → CNN → head pipeline, assessed only as an analytical scenario.
@@ -227,19 +227,25 @@ The same formula gives 271,120 B for S1 (64→16→8→2), 122,592 B for S2 (64�
 
 For context, the historical package reports in Python a footprint of 266.8 KiB (CNN + float KAN layers) against 640.7 KiB (CNN + LUT). That is a Python measurement, not an MCU one, but it agrees with the point above: the tables cost memory and save time.
 
-## 8. Proposed perimeter (for approval)
+## 8. Approved perimeter
 
-- **Minimum result.** A C++ engine for the M-hist head, implementing contract v2, on the ESP32-C3. The inputs are the precomputed 64-d features of fixed test images, computed in Python and embedded as vectors. The output is the logits, the margin and the decision.
-  - Acceptance follows §6.
+Approved by the supervisor on Nov 24, 2026.
+
+- **Minimum result.** A C++ engine for the M-hist head, implementing contract v2, on the ESP32-C3 SuperMini. The inputs are the precomputed 64-d features of fixed test images, computed in Python and embedded as vectors.
+  - The demo reports the two logits [z0, z1] and the margin d = z1 − z0. No probability or softmax is computed on the chip.
+  - Conformance uses d > 0, with ties → no_person (§6).
+  - Order of work in C3-03: first the 14 public F0 vectors, on the PC and in Wokwi, comparing every layer with Python; then the 19 M-hist vectors, locally.
   - Flash, RAM, stack and latency are measured in Wokwi and in the hardware test.
 - **Not claimed.** No end-to-end recognition from images, and no generalisation (the test set is part of validation, §2). The title and the conclusions will say "KAN/LUT head on precomputed features".
 - **Kept separate.** The feasibility of the full pipeline remains the analytical scenario of §7. The camera is optional and outside the minimum.
 
-## 9. Open questions
+## 9. Decisions on the open questions
 
-1. **Board and toolchain.** lut-kan-ids builds for `esp32-c3-devkitm-1` with an unpinned `espressif32` platform, while its source and its hardware results name the ESP32-C3 SuperMini. Will the hardware test use the SuperMini? Do you agree that I pin the platform version current at the start of C3-03?
-2. **Threshold in the firmware.** I propose θ = 0 for all conformance tests. Should the demo firmware also report the decision at the historical operating point?
-3. **Private vectors.** The M-hist vectors and LUTs derive from the weights and stay out of the repository. For the hardware test, shall I send them to you privately, or will you regenerate them with the scripts from the package?
+Decided by the supervisor on Nov 24, 2026.
+
+1. **Board and toolchain.** The physical board is the ESP32-C3 SuperMini. Platform and toolchain versions are the ones fixed in the C3-03 package.
+2. **Outputs and threshold.** The decision rule is d > 0, with ties → no_person. The demo firmware reports only the two logits and the margin; the historical operating point is not computed on the device and remains a comparison in §6.
+3. **Private vectors.** The supervisor regenerates the 19 M-hist vectors with the scripts in `c3-02/scripts/`. Weights, M-hist LUTs and any firmware that embeds them stay local and are not published; firmware built with the F0 tables can be public.
 
 ## 10. Choices and limits
 

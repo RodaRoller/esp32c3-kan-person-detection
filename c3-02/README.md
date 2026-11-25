@@ -1,6 +1,6 @@
 # C3-02 — Model contract and porting perimeter
 
-Which model is ported, in which LUT format, with which reference vectors and acceptance criterion, and how much Flash/RAM it needs. The report is [`C3-02_model_contract.md`](C3-02_model_contract.md) (r2, final). The first draft is at tag `c3-02-r1`.
+Which model is ported, in which LUT format, with which reference vectors and acceptance criterion, and how much Flash/RAM it needs. The report is [`C3-02_model_contract.md`](C3-02_model_contract.md) (r2, final). The first draft is at tag `c3-02-r1`. Approved by the supervisor on Nov 24, 2026.
 
 No model is trained here and nothing runs on the ESP32-C3 yet.
 
