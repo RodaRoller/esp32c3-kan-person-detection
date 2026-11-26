@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "author": "VWW-LUT",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {
+        "serialInterface": "USB_SERIAL_JTAG",
+        "flashSize": "4"
+      }
+    }
+  ],
+  "connections": []
+}
